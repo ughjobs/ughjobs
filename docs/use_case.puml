@@ -1,0 +1,45 @@
+@startuml
+skinparam linetype ortho
+
+Gość -up-> (Zobacz stronę główną)
+Gość -left-> (Zaloguj się)
+Gość -right-> (Zarejestruj się)
+
+newpage
+
+Pracownik -left-> (Zobacz swoje dane)
+Pracownik -right-> (Zobacz listę ofert)
+
+(Zobacz swoje dane) <.up. (Edytuj): extends
+(Zobacz listę ofert) <.up. (Wyślij zgłoszenie): extends
+
+newpage
+
+Firma -up-> (Dodaj ofertę)
+Firma -down-> (Zobacz listę zgłoszeń)
+Firma -left-> (Zobacz swoje dane)
+Firma -right-> (Zobacz listę ofert)
+
+(Zobacz listę zgłoszeń) <.right. (Zaakceptuj): extends
+(Zobacz listę zgłoszeń) <.left. (Odrzuć): extends
+(Zobacz swoje dane) <.up. (Edytuj): extends
+(Zobacz listę ofert) <-right. (Zobacz swoje oferty) : extends
+(Zobacz swoje oferty) <.up. (Usuń) : extends
+
+newpage
+
+Admin -up-> (Zobacz listę ofert)
+Admin -down-> (Zobacz listę zgłoszeń)
+Admin -left-> (Zobacz listę użytkowników)
+
+(Zobacz listę ofert) <.up. (Edytuj ofertę): extends
+(Zobacz listę ofert) <.left. (Usuń ofertę): extends
+(Zobacz listę ofert) <.right. (Dodaj ofertę): extends
+
+(Zobacz listę zgłoszeń) <.right. (Usuń zgłoszenie): extends
+
+(Zobacz listę użytkowników) <.up. (Edytuj użytkownika): extends
+(Zobacz listę użytkowników) <.left. (Usuń użytkownika): extends
+(Zobacz listę użytkowników) <.down. (Dodaj użytkownika): extends
+
+@enduml
