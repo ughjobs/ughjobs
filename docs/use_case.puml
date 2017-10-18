@@ -10,8 +10,10 @@ newpage
 Pracownik -left-> (Zobacz swoje dane)
 Pracownik -right-> (Zobacz listę ofert)
 
+
 (Zobacz swoje dane) <.up. (Edytuj): extends
 (Zobacz listę ofert) <.up. (Wyślij zgłoszenie): extends
+(Zobacz listę ofert) <.right. (Wyszukaj): extends
 
 newpage
 
