@@ -7,13 +7,15 @@ Gość -right-> (Zarejestruj się)
 
 newpage
 
+Pracownik -up-> (Zobacz listę\nswoich zgłoszeń)
 Pracownik -left-> (Zobacz swoje dane)
 Pracownik -right-> (Zobacz listę ofert)
 
 
 (Zobacz swoje dane) <.up. (Edytuj): extends
 (Zobacz listę ofert) <.up. (Wyślij zgłoszenie): extends
-(Zobacz listę ofert) <.right. (Wyszukaj): extends
+(Zobacz listę ofert) <.right. (Wyszukaj ofertę): extends
+(Zobacz listę\nswoich zgłoszeń) <.up. (Wycofaj zgłoszenie): extends
 
 newpage
 
