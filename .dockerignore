@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 Dockerfile
-.gitignore
+.git*
 .travis.yml
 docs
 
