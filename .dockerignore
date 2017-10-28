@@ -3,6 +3,7 @@ Dockerfile
 .git*
 .travis.yml
 docs
+.dockerignore
 
 # IntelliJ project files
 .idea
