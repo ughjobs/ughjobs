@@ -1,6 +1,6 @@
 FROM python:3-alpine3.6
 
-ENV appName
+ENV appName ughjobs
 
 ADD . /$appName
 WORKDIR /$appName

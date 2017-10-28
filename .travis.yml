@@ -1,14 +1,16 @@
 sudo: required
 
 language: python
+python:
+  - 3.6
 
 services:
   - docker
 
 before_install:
   - docker build --rm -t ughjobs/ughjobs .
-  - docker run
+  - docker run -d --name ughjobs ughjobs/ughjobs
+  - docker run ughjobs/ughjobs 'cd /ughjobs; ./manage.py test'
 
-install:
-  - pip install tox
-
+script:
+  - ./manage.py test
