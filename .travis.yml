@@ -10,7 +10,7 @@ services:
 before_install:
   - docker build --rm -t ughjobs/ughjobs .
   - docker run -d --name ughjobs ughjobs/ughjobs
-  - docker run ughjobs/ughjobs 'cd /ughjobs; ./manage.py test'
+  - docker run ughjobs/ughjobs ./manage.py test
 
 script:
   - ./manage.py test
