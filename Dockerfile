@@ -4,6 +4,13 @@ ENV appName ughjobs
 
 ADD . /$appName
 WORKDIR /$appName
-RUN pip install -r contrib/dependencies.txt
+RUN ls -aR
+# Install build deps
+RUN apk add --no-cache --virtual .build-deps \
+		gcc \
+		postgresql-dev \
+		libc-dev \
+	&& pip install -r contrib/dependencies.txt \
+	&& apk del --no-cache .build-deps
 
 CMD [ "python", "./manage.py runserver 0.0.0.0:8000" ]
