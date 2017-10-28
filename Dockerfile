@@ -13,4 +13,6 @@ RUN apk add --no-cache --virtual .build-deps \
 	&& pip install -r contrib/dependencies.txt \
 	&& apk del --no-cache .build-deps
 
+EXPOSE 8000
+
 CMD [ "python", "./manage.py runserver 0.0.0.0:8000" ]
