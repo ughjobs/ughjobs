@@ -1,6 +1,12 @@
 @startuml
 skinparam linetype ortho
 
+newpage
+:Gość: <|-- :Pracownik:
+:Pracownik: <|-- :Firma:
+:Firma: <|-- :Admin:
+
+newpage
 Gość -up-> (Zobacz stronę główną)
 Gość -left-> (Zaloguj się)
 Gość -right-> (Zarejestruj się)
@@ -16,6 +22,7 @@ Pracownik -right-> (Zobacz listę ofert)
 (Zobacz listę ofert) <.up. (Wyślij zgłoszenie): extends
 (Zobacz listę ofert) <.right. (Wyszukaj ofertę): extends
 (Zobacz listę\nswoich zgłoszeń) <.up. (Wycofaj zgłoszenie): extends
+
 
 newpage
 
