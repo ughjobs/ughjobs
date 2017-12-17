@@ -10,7 +10,6 @@ services:
 before_install:
   - docker build --rm -t ughjobs/ughjobs .
   - docker run -d --name ughjobs ughjobs/ughjobs
-  - docker run ughjobs/ughjobs test
 
 install:
   - pip install -r requirements.txt
