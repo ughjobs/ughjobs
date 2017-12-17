@@ -13,7 +13,8 @@ before_install:
   - docker run ughjobs/ughjobs ./manage.py test
 
 install:
-  - pip install -r contrib/dependencies.txt
+  - pip install -r requirements.txt
+  - pip install -r test-requirements.txt
 
 script:
-  - ./manage.py test
+  -

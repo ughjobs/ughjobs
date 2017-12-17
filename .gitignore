@@ -1,5 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea# Byte-compiled / optimized / DLL files
+.idea
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
