@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from __future__ import absolute_import
-from ughjobs.models.byte_array import ByteArray
+#from ughjobs.models.byte_array import ByteArray
 import re
 from .base_model_ import Model
 from datetime import date, datetime
@@ -31,7 +31,7 @@ class Job(Model):
             'id': int,
             'company': int,
             'expire': date,
-            'content': ByteArray
+            'content': bytearray
         }
 
         self.attribute_map = {
