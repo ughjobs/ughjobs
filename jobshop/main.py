@@ -7,9 +7,9 @@ import datetime
 from functools import wraps
 import time
 import enum
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 app.config['SECRET_KEY'] = 'SecretPassword'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database'
 
@@ -251,7 +251,7 @@ def toggle_job(current_user, job_id):
     job = Job.query.filter_by(id=job_id).first()
 
     if not job:
-        return jsonify({'message': 'No user found!'})
+        return jsonify({'message': 'No job found!'})
 
     job.active = not job.active
     db.session.commit()
@@ -269,7 +269,7 @@ def create_application(current_user):
     db.session.add(application)
     db.session.commit()
 
-    return jsonify({'message': 'New user created!'})
+    return jsonify({'message': 'New application created!'})
 
 
 @app.route('/application', methods=['GET'])
@@ -309,6 +309,7 @@ def read_application(current_user, application_id):
 def delete_application(current_user, application_id):
     if not current_user.admin:
         return jsonify({'message': 'You must be admin!'})
+
     job = Application.query.filter_by(id=application_id).first()
 
     if not job:
