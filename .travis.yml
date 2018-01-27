@@ -10,10 +10,10 @@ services:
 before_install:
   - docker build --rm -t ughjobs/ughjobs .
   - docker run -d --name ughjobs ughjobs/ughjobs
-  - docker run ughjobs/ughjobs ./manage.py test
 
 install:
-  - pip install -r contrib/dependencies.txt
+  - pip install -r requirements.txt
+  - pip install -r test-requirements.txt
 
 script:
-  - ./manage.py test
+  - pytest

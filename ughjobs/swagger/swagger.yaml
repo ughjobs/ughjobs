@@ -1,0 +1,355 @@
+---
+swagger: "2.0"
+info:
+  description: "Ten dokument stanowi specyfkację JSON REST API dla aplikacji UGHJobs."
+  version: "1.0.0"
+  title: "UGHJobs API"
+basePath: "/api"
+tags:
+- name: "job"
+  description: "Wszystkie operacje na wystawionych ofertach pracy."
+- name: "application"
+  description: "Wszystkie operacje na zgłoszeniach do ofert pracy."
+- name: "user"
+  description: "Wszystkie operacje na użytkownikach."
+schemes:
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "user"
+      summary: "Wyświetlenie wszystkich użytkowników"
+      operationId: "users_get"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+      x-swagger-router-controller: "ughjobs.controllers.user_controller"
+    post:
+      tags:
+      - "user"
+      summary: "Dodanie nowego użytkownika"
+      operationId: "users_post"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        201:
+          description: "Użytkownik utworzony."
+      x-swagger-router-controller: "ughjobs.controllers.user_controller"
+  /users/{id}:
+    get:
+      tags:
+      - "user"
+      summary: "Wyświetlenie pojedynczego użytkownika"
+      operationId: "users_id_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator użytkownika."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/User"
+      x-swagger-router-controller: "ughjobs.controllers.user_controller"
+    delete:
+      tags:
+      - "user"
+      summary: "Usunięcie użytkownika."
+      operationId: "users_id_delete"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator użytkownika."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Usunięto."
+      x-swagger-router-controller: "ughjobs.controllers.user_controller"
+  /jobs:
+    get:
+      tags:
+      - "job"
+      summary: "Wyświetlenie wszystkich ofert pracy"
+      operationId: "jobs_get"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+      x-swagger-router-controller: "ughjobs.controllers.job_controller"
+    post:
+      tags:
+      - "job"
+      summary: "Dodanie nowego ogłoszenia"
+      operationId: "jobs_post"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Job"
+      responses:
+        201:
+          description: "Użytkownik utworzony."
+      x-swagger-router-controller: "ughjobs.controllers.job_controller"
+  /jobs/{id}:
+    get:
+      tags:
+      - "job"
+      summary: "Wyświetlenie pojedynczej oferty"
+      operationId: "jobs_id_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator oferty pracy."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Job"
+      x-swagger-router-controller: "ughjobs.controllers.job_controller"
+    delete:
+      tags:
+      - "job"
+      summary: "Usunięcie oferty."
+      operationId: "jobs_id_delete"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator oferty pracy."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Usunięto."
+      x-swagger-router-controller: "ughjobs.controllers.job_controller"
+  /jobs/{id}/apply:
+    post:
+      tags:
+      - "application"
+      summary: "Dodanie nowego zgłoszenia do oferty"
+      operationId: "jobs_id_apply_post"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator oferty pracy."
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Application"
+      responses:
+        201:
+          description: "Dodano zgłoszenie"
+      x-swagger-router-controller: "ughjobs.controllers.application_controller"
+  /applications:
+    get:
+      tags:
+      - "application"
+      summary: "Wyświetlenie wszystkich zgłoszeń"
+      operationId: "applications_get"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+      x-swagger-router-controller: "ughjobs.controllers.application_controller"
+  /applications/{id}:
+    get:
+      tags:
+      - "application"
+      summary: "Wyświetlenie pojedynczego zgłoszenia"
+      operationId: "applications_id_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator zgłoszenia o prace"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Application"
+      x-swagger-router-controller: "ughjobs.controllers.application_controller"
+    delete:
+      tags:
+      - "application"
+      summary: "Usunięcie zgłoszenia."
+      operationId: "applications_id_delete"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator zgłoszenia o prace"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Usunięto."
+      x-swagger-router-controller: "ughjobs.controllers.application_controller"
+  /companies:
+    get:
+      tags:
+      - "companies"
+      summary: "Wyświetlenie wszystkich firm"
+      operationId: "companies_get"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+      x-swagger-router-controller: "ughjobs.controllers.companies_controller"
+    post:
+      tags:
+      - "companies"
+      summary: "Dodanie nowej firmy"
+      operationId: "companies_post"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Company"
+      responses:
+        201:
+          description: "Firma utworzona."
+      x-swagger-router-controller: "ughjobs.controllers.companies_controller"
+  /companies/{id}:
+    get:
+      tags:
+      - "companies"
+      summary: "Wyświetlenie pojedynczej firmy"
+      operationId: "companies_id_get"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator firmy"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Company"
+      x-swagger-router-controller: "ughjobs.controllers.companies_controller"
+    delete:
+      tags:
+      - "companies"
+      summary: "Usunięcie firmy."
+      operationId: "companies_id_delete"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identyfikator firmy"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Usunięto."
+      x-swagger-router-controller: "ughjobs.controllers.companies_controller"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      email:
+        type: "string"
+        format: "email"
+      password:
+        type: "string"
+        minLength: 8
+        maxLength: 32
+      name:
+        type: "string"
+      surname:
+        type: "string"
+      account:
+        type: "string"
+        enum:
+        - "admin"
+        - "company"
+        - "employee"
+    xml:
+      name: "User"
+  Job:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      company:
+        type: "integer"
+        format: "int64"
+      expire:
+        type: "string"
+        format: "date"
+      content:
+        type: "string"
+        format: "byte"
+        pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        x-regex: "^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"
+        x-modifiers: []
+  Application:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      job_id:
+        type: "integer"
+        format: "int64"
+  Company:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        minLength: 3
+        maxLength: 32
+      tax_number:
+        type: "integer"
+        format: "int64"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
