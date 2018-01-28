@@ -15,8 +15,12 @@ class FlaskJobShopTest(unittest.TestCase):
 
     def test_home_status_code(self):
         """Assert that user successfully lands on homepage"""
-        result = self.app.get('/', environ_base=)
+        result = self.app.get('/')
         self.assertEqual(result.status_code, 200)
+
+    def test_user_not_autheticated(self):
+        result = self.app.get('/user')
+        self.assertEqual(result.status_code, 401)
 
 
 if __name__ == '__main__':
