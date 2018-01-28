@@ -1,26 +1,19 @@
-from jobshop.main import app, db
-from flask import url_for
 import unittest
+import urllib.request as request
+import urllib.error
 
 class FlaskJobShopTest(unittest.TestCase):
 
-    def setUp(self):
-        """Set up test application client"""
-        self.app = app.test_client()
-        self.app.testing = True
-
-    def tearDown(self):
-        """Clear DB after running tests"""
-        db.todos.remove({})
-
     def test_home_status_code(self):
         """Assert that user successfully lands on homepage"""
-        result = self.app.get('/')
-        self.assertEqual(result.status_code, 200)
+        result = request.urlopen('http://localhost:5000/')
+        self.assertEqual(result.code, 200)
 
     def test_user_not_autheticated(self):
-        result = self.app.get('/user')
-        self.assertEqual(result.status_code, 401)
+        with self.assertRaises(urllib.error.HTTPError) as cm:
+            result = request.urlopen('http://localhost:5000/user')
+        exception = cm.exception
+        self.assertEqual(exception.code, 401)
 
 
 if __name__ == '__main__':
