@@ -1,4 +1,4 @@
-from jobshop.main import app, db
+from main import app, db
 from flask import url_for
 import unittest
 
@@ -15,7 +15,7 @@ class FlaskJobShopTest(unittest.TestCase):
 
     def test_home_status_code(self):
         """Assert that user successfully lands on homepage"""
-        result = self.app.get('/')
+        result = self.app.get('/', environ_base=)
         self.assertEqual(result.status_code, 200)
 
 

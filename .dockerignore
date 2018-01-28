@@ -66,6 +66,7 @@ coverage.xml
 .hypothesis/
 venv/
 .python-version
+tests/
 
 # Translations
 *.mo
