@@ -14,7 +14,7 @@ class FlaskJobShopTest(unittest.TestCase):
         db.todos.remove({})
 
     def test_home_status_code(self):
-         """Assert that user successfully lands on homepage"""
+        """Assert that user successfully lands on homepage"""
         result = self.app.get('/')
         self.assertEqual(result.status_code, 200)
 
