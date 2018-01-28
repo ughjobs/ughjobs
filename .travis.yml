@@ -9,7 +9,7 @@ services:
 
 before_install:
   - docker build --rm -t ughjobs/ughjobs .
-  - docker run -d --name ughjobs ughjobs/ughjobs
+  - docker run -p 5000:5000 --rm -d --name ughjobs ughjobs/ughjobs
 
 install:
   - pip install -r requirements.txt
