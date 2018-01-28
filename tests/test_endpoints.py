@@ -1,4 +1,4 @@
-from main import app, db
+from jobshop.main import app, db
 from flask import url_for
 import unittest
 
