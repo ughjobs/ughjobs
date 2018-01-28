@@ -4,9 +4,11 @@ ENV appName jobshop
 
 ADD $appName/ /$appName
 ADD requirements.txt /$appName
+ADD docker_entrypoint.sh /
 WORKDIR /$appName
 RUN ls -aR
 # Install build deps
+RUN apk add --no-cache sudo
 RUN apk add --no-cache --virtual .build-deps \
 		gcc \
 		postgresql-dev \
@@ -17,6 +19,5 @@ RUN apk add --no-cache --virtual .build-deps \
 EXPOSE 5000
 
 #CMD [ "python", "./manage.py runserver 0.0.0.0:8000" ]
-ENTRYPOINT ["python"]
-
-CMD ["-m", "main"]
+ENTRYPOINT ["/docker_entrypoint.sh"]
+CMD ["python", "-m", "main"]

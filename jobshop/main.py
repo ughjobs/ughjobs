@@ -320,7 +320,6 @@ def delete_application(current_user, application_id):
 
     return jsonify({'message': 'The application has been deleted!'})
 
-
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host='0.0.0.0')
 
