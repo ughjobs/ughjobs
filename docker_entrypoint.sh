@@ -3,14 +3,6 @@
 
 [[ "z${USER_ID}" == "z" ]] && USER_ID=$(id -u)
 [[ "z${GROUP_ID}" == "z" ]] && GROUP_ID=$(id -g)
-[[ -z "${FLASK_DEBUG}" ]] && FLASK_DEBUG=0
-
-if [[ ${FLASK_DEBUG} -eq 1 ]];then
-    echo $PATH
-    python --version
-fi
-
-COMMAND=""
 
 if [[ ${USER_ID} -eq 0 ]];then
     exec "$@"
