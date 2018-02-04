@@ -2,7 +2,7 @@ FROM python:3-alpine3.6
 
 ENV appName jobshop
 
-ADD $appName/ /$appName
+ADD __init__.py database* main.py json/  /$appName/
 ADD requirements.txt /$appName
 ADD docker_entrypoint.sh /
 WORKDIR /$appName
@@ -14,7 +14,8 @@ RUN apk add --no-cache --virtual .build-deps \
 		postgresql-dev \
 		libc-dev \
 	&& pip install -r requirements.txt \
-	&& apk del --no-cache .build-deps
+	&& apk del --no-cache .build-deps \
+	&& rm -f .build-deps
 
 EXPOSE 5000
 
