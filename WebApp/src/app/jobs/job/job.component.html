@@ -1,0 +1,15 @@
+<form (ngSubmit)="register()">
+  <div class="form-group" >
+      <label for="title">Tytuł</label>
+      <input type="text" class="form-control"  name="title" [(ngModel)]="data.title"/>
+  </div>
+  
+  <div class="form-group" >
+      <label for="data.street_numbe">Opis Stanowiska</label>
+      <input type="textbox" style="height:300px" class="form-control" name="description" [(ngModel)]="data.description" />  
+  </div>
+
+  <div class="form-group" style="margin-top:5px;">
+      <button type="submit" class="btn btn-primary">Dodaj Ogłoszenie</button>
+  </div>
+</form>

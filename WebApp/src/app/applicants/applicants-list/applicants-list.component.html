@@ -1,0 +1,31 @@
+<div class="container" style="text-align: center">
+    <div class="row">
+      <div class="=col-sm-12">
+        <table class="table table-striped">
+          <thead class="table-primary">
+            <tr>
+              <th>Praca</th>
+              <th>Kandydat</th>
+              <th>Utworzono</th>
+              <th>Komentarz</th>
+              <th>Status</th>
+              <th>Usuń Aplikację</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let application of applicants; let i = index">   
+                <th>{{application?.job_id}}</th>
+                <th>{{application?.candidate_id}}</th>
+                <th>{{application?.created}}</th>
+                <th>{{application?.comment}}</th>
+                <th>{{application?.status}}</th>
+                <th>
+                    <button (click) ="deleteApplication(application.id)" type="submit" class="btn btn-danger">Usuń</button>
+                </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,47 @@
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink="">UG-JOBS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" routerLinkActive="active">
+              <a class="nav-link"  routerLink="">Strona główna <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Oferty Pracy
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+               <li routerLinkActive="active"> <a class="dropdown-item"  routerLink="/jobs">Lista Ofert</a></li>
+               <li routerLinkActive="active"> <a class="dropdown-item" routerLink="/job">Dodaj Ofertę</a></li>
+              </div>
+            </li>
+            <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Użytkownicy
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+               <li routerLinkActive="active"> <a class="dropdown-item"  routerLink="/users">Pełna lista</a></li>
+               <li routerLinkActive="active"> <a class="dropdown-item" routerLink="/applications">Aplikacje</a></li>
+                <div class="dropdown-divider"></div>
+                <li routerLinkActive="active">  <a class="dropdown-item" routerLink="/users">Moje konto</a></li>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#"></a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" *ngIf="!isLoggedIn()">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" routerLink="/signin" style="margin-right: 5px">Login</button>
+            </form>
+          <form class="form-inline my-2 my-lg-0" *ngIf="!isLoggedIn()">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/signup">Rejestracja</button>
+          </form>
+          <form class="form-inline my-2 my-lg-0" *ngIf="isLoggedIn()">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" (click)="logout()" style="margin-right: 5px">Wyloguj</button>
+          </form>
+        </div>
+      </nav>

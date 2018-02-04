@@ -1,0 +1,38 @@
+<div class="container" style="text-align: center">
+  <div class="row">
+    <div class="=col-sm-12">
+      <table class="table table-striped">
+        <thead class="table-primary">
+          <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Login</th>
+            <th>Miasto</th>
+            <th>Ulica</th>
+            <th>Numer Ulicy</th>
+            <th>Numer mieszkanaia</th>
+            <th>Szczegóły </th>
+            <th>Usuń użytkownika </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let index = index;">
+            <th>{{user?.name}}</th>
+            <th>{{user?.surname}}</th>
+            <th>{{user?.login}}</th>
+            <th>{{user?.city}}</th>
+            <th>{{user?.street}}</th>
+            <th>{{user?.street_number}}</th>
+            <th>{{user?.apartment}}</th>
+            <th>
+                <button (click) ="getUser(user.id)" type="submit" class="btn btn-primary">Szczegóły</button>
+            </th>
+            <th>
+                <button (click) ="deleteUser(user.id)" type="submit" class="btn btn-danger">Usuń</button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

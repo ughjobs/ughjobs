@@ -1,0 +1,34 @@
+<div class="container" style="text-align:center">
+  <div class="row">
+    <div class="=col-sm-12">
+      <table class="table table-striped">
+        <thead class="table-primary">
+          <tr>
+            <th>Tytuł</th>
+            <th>Opis</th>
+            <th>Dodano</th>
+            <th>Rekrutacja otwarta</th>
+            <th>Szczegóły</th>
+            <th>Usuń ofertę</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let job of jobs; let i = index">
+              <th>{{job?.title}}</th>
+              <th>{{job?.description}}</th>
+              <th>{{job?.created}}</th>
+              <th>
+                 <button (click) ="apply(job.id)" type="submit" class="btn btn-success">Aplikuj</button>
+              </th>
+              <th>
+                  <button (click) ="getJob(job.id)" type="submit" class="btn btn-primary">Szczegóły</button>
+              </th>
+              <th>
+                  <button (click) ="delete(job.id)" type="submit" class="btn btn-danger">Usuń</button>
+              </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

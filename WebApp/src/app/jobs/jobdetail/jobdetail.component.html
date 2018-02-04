@@ -1,0 +1,22 @@
+<div *ngIf="ready">
+    <div class="form-group" >
+        <label>Tytuł</label>
+        <input type="text" class="form-control"  name="title" value="{{job.title}}" readonly/>
+    </div>
+    
+    <div class="form-group" >
+        <label>Opis Stanowiska</label>
+        <input type="textbox" style="height:300px" class="form-control" name="description" value="{{job.description}}" readonly />  
+    </div>
+
+    <div class="form-group" >
+        <label>Data Utworzenia</label>
+        <input type="text" class="form-control" name="description" value="{{job.created}}" readonly />  
+    </div>
+
+    <div class="form-group" >
+        <label>Oferta Aktywna</label>
+        <input type="text" class="form-control" name="description" value="{{job.active}}" readonly />  
+    </div>
+
+  </div>
