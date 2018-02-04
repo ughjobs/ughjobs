@@ -1,1 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
+Dockerfile
+.dockerignore
+README.md
+e2e/
