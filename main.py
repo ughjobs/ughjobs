@@ -50,7 +50,7 @@ class Application(db.Model):
     candidate_id = db.Column(db.Integer)
     comment = db.Column(db.String(4096))
     created = db.Column(db.DateTime)
-    status = db.Column(db.Enum(ApplicationStatus))
+    status = db.Column(db.Integer)
 
 
 def token_required(f):
@@ -196,7 +196,7 @@ def create_job(current_user):
     db.session.add(new_job)
     db.session.commit()
 
-    return jsonify({'message': 'New user created!'})
+    return jsonify({'message': 'New job created!'})
 
 
 @app.route('/job', methods=['GET'])
@@ -264,7 +264,7 @@ def toggle_job(current_user, job_id):
 def create_application(current_user):
     data = request.get_json()
     application = Application(job_id=data['job_id'], candidate_id=current_user.id, comment=data['comment'],
-                              created=datetime.datetime.utcnow(), status=ApplicationStatus.NEW)
+                              created=datetime.datetime.now(), status=ApplicationStatus.NEW.value)
 
     db.session.add(application)
     db.session.commit()
