@@ -1,19 +1,19 @@
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
-import uuid
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import datetime
 from functools import wraps
-import time
 import enum
 from flask_cors import CORS
+
 app = Flask(__name__)
 CORS(app)
 app.config['SECRET_KEY'] = 'SecretPassword'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database'
 
 db = SQLAlchemy(app)
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -264,7 +264,7 @@ def toggle_job(current_user, job_id):
 def create_application(current_user):
     data = request.get_json()
     application = Application(job_id=data['job_id'], candidate_id=current_user.id, comment=data['comment'],
-                              created=data['created'], status=ApplicationStatus.NEW)
+                              created=datetime.datetime.utcnow(), status=ApplicationStatus.NEW)
 
     db.session.add(application)
     db.session.commit()
@@ -320,6 +320,6 @@ def delete_application(current_user, application_id):
 
     return jsonify({'message': 'The application has been deleted!'})
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
 
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
