@@ -17,5 +17,8 @@ else
 
     adduser -s /bin/sh -u ${USER_ID} -G ${RUN_GROUP} -D -S ${RUN_USER}
 
+    # Give user write access to app files
+    chown ${RUN_USER}:${RUN_GROUP} -R .
+
     exec sudo -E -u "${RUN_USER}" "$@"
 fi
