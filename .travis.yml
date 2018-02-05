@@ -30,7 +30,8 @@ matrix:
     before_script:
       - cd WebApp/
     script:
-      - ng test
+      - ng e2e
+      #- true
     after_success:
       - if [ "$TRAVIS_BRANCH" == "master" ]; then
         docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
