@@ -1,25 +1,39 @@
 sudo: required
-
-language: python
-python:
-  - 3.6
-
 services:
   - docker
 
-before_install:
-  - docker build --rm -t ughjobs/ughjobs .
-  - docker run -p 5000:5000 --rm -d --name ughjobs ughjobs/ughjobs
+matrix:
+  include:
+  - language: python
+    python: 3.6
+    before_install:
+      - docker build --rm -t ughjobs/jobshop -f Dockerfile .
+      - docker run -p 5000:5000 --rm -d --name jobshop ughjobs/jobshop
+    install:
+      - pip install -r requirements.txt
+      - pip install -r test-requirements.txt
+    script:
+      - python tests/test_endpoints.py
+    after_success:
+      - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+        docker push ughjobs/jobshop;
+        fi
 
-install:
-  - pip install -r requirements.txt
-  - pip install -r test-requirements.txt
-
-script:
-  - python tests/test_endpoints.py
-
-after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-    docker push ughjobs/ughjobs;
-    fi
+  - language: node_js
+    before_install:
+      - docker build --rm -t ughjobs/webapp -f WebApp/Dockerfile .
+      - docker run -p 4200:4200 --rm -d --name webapp ughjobs/webapp
+    install:
+      - npm install -g sync-exec
+      - npm install -g @angular/cli
+    before_script:
+      - cd WebApp/
+    script:
+      #- ng e2e
+      - true
+    after_success:
+      - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+        docker push ughjobs/webapp;
+        fi

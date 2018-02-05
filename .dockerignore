@@ -4,6 +4,7 @@ Dockerfile
 .travis.yml
 docs
 .dockerignore
+e2e/
 
 # IntelliJ project files
 .idea

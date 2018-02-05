@@ -2,3 +2,9 @@
 # Authors:
 Mateusz Mania
 Jerzy Drozdz
+
+## Front-End app made in Angular.
+### To run app, go in folder WebApp, then in command line write "ng serve"
+
+## Back-End python Flask Api
+### Run main.py
