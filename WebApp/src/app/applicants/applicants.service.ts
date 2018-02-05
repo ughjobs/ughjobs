@@ -11,7 +11,7 @@ import { Headers } from '@angular/http';
 export class ApplicantsService {
     public applicantsList : Applicant[];
     public load : boolean;
-    private apiUrl = 'http://localhost:5000/application'
+    private apiUrl = 'http://ughjobs.jdsieci.eu/api/application'
     constructor(private http : Http,
         private authService: JwtService,
         private router : Router) { }

@@ -13,7 +13,7 @@ import { HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class JwtService {
 
-  private BASE_URL: string = 'http://localhost:5000';
+  private BASE_URL: string = 'http://ughjobs.jdsieci.eu/api';
   public username: string = "";
   public loggedIn: boolean = false
   constructor(private http: Http, private router: Router) { }

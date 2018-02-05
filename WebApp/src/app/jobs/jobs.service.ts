@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class JobsService {
   public jobList: Job[];
-  private apiUrl = 'http://localhost:5000/job'
+  private apiUrl = 'http://ughjobs.jdsieci.eu/api/job'
   constructor(private http: Http,
     private authService: JwtService,
     private router: Router) { }

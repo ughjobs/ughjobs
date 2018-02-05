@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class UsersService {
-  private apiUrl = 'http://localhost:5000/user';
+  private apiUrl = 'http://ughjobs.jdsieci.eu/api/user';
   public userList : User[];
   constructor(private http : Http,
               private authService: JwtService,
